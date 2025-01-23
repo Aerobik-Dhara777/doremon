@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOT Library Dashboard</title>
+    <style>
+        /* dashboard.css */
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .nav-links a, .menu-icon {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+        }
+
+        .dashboard {
+            display: flex;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+        }
+
+        .user-greeting img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .checked-out-books table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .checked-out-books th, .checked-out-books td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Library Events Section */
+        .library-events {
+            background-color: #fff;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .library-events .event {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .library-events p {
+            font-size: 16px;
+            color: #333;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .library-events p:hover {
+            background-color: #f0f8ff;
+            color: #007BFF;
+            cursor: pointer;
+        }
+
+        /* Streak of Study Section */
+        .committed-reader {
+            background-color: #e3f2fd;
+            border: 2px solid #64b5f6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .committed-reader:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .committed-reader p:first-child {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .committed-reader p:last-child {
+            font-size: 16px;
+            color: #424242;
+            margin-bottom: 15px;
+        }
+
+        .committed-reader .progress-bar-container {
+            width: 100%;
+            background-color: #cfd8dc;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .committed-reader .progress-bar {
+            height: 100%;
+            width: 66%; /* Adjust this dynamically */
+            background-color: #42a5f5;
+            border-radius: 10px 0 0 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        .committed-reader .progress-text {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #424242;
+            font-weight: bold;
+        }
+
+        .committed-reader button {
+            padding: 10px 20px;
+            background-color: #42a5f5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .committed-reader button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="menu-icon">☰</div>
+            <div class="search-bar"><input type="text" placeholder="Search..."></div>
+            <div class="nav-links">
+                <a href="http://127.0.0.1:3000/testing5CODE.html">Home</a>
+                <a href="#">Catalog</a>
+                <a href="#">Events</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li>Summary</li>
+                <li>Charges</li>
+                <li>Personal Details</li>
+                <li>Change Password</li>
+                <li>Checkout History</li>
+                <li>Purchase Suggestions</li>
+                <li>Messaging</li>
+                <li>Lists</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section class="user-greeting">
+                <img src="user-profile.jpg" alt="User Profile">
+                <div>
+                    <h1>Hello, Soumadip Dhara. Welcome To NEUROSPARK!</h1>
+                    <p>Log out or switch account</p>
+                </div>
+            </section>
+
+            <section class="checked-out-books">
+                <h2>Checked Out Books</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Due Date</th>
+                            <th>Call Number</th>
+                            <th>Renewal Options</th>
+                            <th>Fines</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Great Gatsby</td>
+                            <td>F. Scott Fitzgerald</td>
+                            <td>2023-11-15</td>
+                            <td>823.912 FIT</td>
+                            <td><button>Renew</button></td>
+                            <td>$1.50</td>
+                        </tr>
+                        <tr>
+                            <td>1984</td>
+                            <td>George Orwell</td>
+                            <td>2023-11-22</td>
+                            <td>823.912 ORW</td>
+                            <td><button>Renew</button></td>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>To Kill a Mockingbird</td>
+                            <td>Harper Lee</td>
+                            <td>2023-11-30</td>
+                            <td>823.912 LEE</td>
+                            <td><button>Renew</button></td>
+                            <td>$0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <fieldset>
+                <legend><h2>Library Events</h2></legend>
+                <section class="library-events">
+                    <div class="event">
+                        <p>Book Club Meetup</p>
+                        <p>Author Talk: Writing Tips by John Doe</p>
+                    </div>
+                </section>
+            </fieldset>
+
+            <fieldset>
+                <legend><h2>Streak of Study</h2></legend>
+                <section class="committed-reader">
+                    <p>3-Day Streak</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                        <div class="progress-text">2/3 Sessions Completed</div>
+                    </div>
+                    <button>Earn More Points</button>
+                </section>
+            </fieldset>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2023 AOT Library. All rights reserved.</p>
+    </footer>
+</body>
+</html>
